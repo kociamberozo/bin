@@ -1,0 +1,12 @@
+#!/bin/bash
+
+INTERNAL_OUTPUT="LVDS-1"
+EXTERNAL_OUTPUT="VGA-1"
+GUARDIAN=$(xrandr | grep VGA1)
+
+if [ "$GUARDIAN" == "VGA1 connected (normal left inverted right x axis y axis)" ]
+	then
+		xrandr --output $EXTERNAL_OUTPUT --auto --right-of $INTERNAL_OUTPUT
+	else
+		xrandr --output $EXTERNAL_OUTPUT --off
+fi
